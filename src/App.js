@@ -1,26 +1,23 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Map from './components/map';
+import { Provider } from 'react-redux';
+import Uploader from './components/csvUploader';
+import NumberOfBookingsChart from './components/charts';
+import { store } from './store';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends React.Component {
+  render() {
+    return (
+      <Provider store={store}>
+        <div className="App">
+          <div style={{ display: 'inline-block', width: '100%' }}>
+            <h1 style={{ marginLeft: 5, display: 'inline-block' }}>Interactive Map demo</h1>
+            <Uploader />
+          </div>
+          <Map />
+          <NumberOfBookingsChart />
+        </div>
+      </Provider>
+    );
+  }
 }
-
-export default App;
