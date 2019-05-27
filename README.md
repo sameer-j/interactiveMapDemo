@@ -49,7 +49,7 @@ $ yarn
 Open your favorite Terminal and run these commands to run.
 ```npm start```
 
-#### Building for source
+#### Building from source
 For production release
 ``` npm run build ```
 
@@ -61,7 +61,6 @@ Adding more filters
  - When is the peak time of booking
  - Which are the top 10 users booking frequently so any coupons / discount can be provided
 Add loader after uploding big CSV file
-Demo csv file upload
 
 License
 ----
