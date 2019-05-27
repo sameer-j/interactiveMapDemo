@@ -1,5 +1,5 @@
 # Interactive Map demo
-This is sample app to demonstrate the plotting of various points on the Map, as well as applying filters to view view specific filtered information.
+This is sample app to demonstrate the plotting of various points on the Map and filter specific informations via charts.
 
 The demo app works for a specific CSV file format to get meaningful information of rides.
 https://rinkuk1993.github.io/interactiveMapDemo/
