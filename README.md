@@ -57,9 +57,9 @@ For production release
 ### Todos
 
  * Adding more filters
-  * To show where more cancellations are happening
-  * When is the peak time of booking
-  * Which are the top 10 users booking frequently so any coupons / discount can be provided
+   * To show where more cancellations are happening
+   * When is the peak time of booking
+   * Which are the top 10 users booking frequently so any coupons / discount can be provided
  * Add loader after uploding big CSV file
 
 License
