@@ -61,6 +61,7 @@ For production release
    * When is the peak time of booking
    * Which are the top 10 users booking frequently so any coupons / discount can be provided
  * Add loader after uploding big CSV file
+ * Upload demo CSV to git
 
 License
 ----
