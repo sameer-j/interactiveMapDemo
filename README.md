@@ -1,6 +1,6 @@
 # Interactive Map demo
 This is sample app to demonstrate the plotting of various points on the Map and filter specific informations via charts.
-
+Data converted and stored in normalised format to provide filtering efficiently.
 The [demo](https://rinkuk1993.github.io/interactiveMapDemo/) app works for a specific CSV file format to get meaningful information of rides.
 
 
@@ -63,7 +63,3 @@ For production release
  * Add loader after uploding big CSV file
  * Upload demo CSV to git
 
-License
-----
-
-MIT
