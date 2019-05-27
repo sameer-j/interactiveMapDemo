@@ -11,9 +11,9 @@ https://rinkuk1993.github.io/interactiveMapDemo/
   - Click on the chart values to filter the plotting on the map.
   - Click the button on top right to reset the filters and go back to ploting of all points
 
-Currently user can see filters for -
-  -- What type travel plans are booked by users
-  -- What are the different different packages that the users are using the most
+Currently user can see filters for
+  - What type travel plans are booked by users
+  - What are the different different packages that the users are using the most
 
 # Bugs!!
   - Please use `Safari` or `Firefox` For best results for plotting almost 50k points on the map using the above library. Current version of chrome has some issue in plot the markers for large numbers https://github.com/Leaflet/Leaflet.markercluster/issues/951
