@@ -7,7 +7,11 @@ https://rinkuk1993.github.io/interactiveMapDemo/
 # How it works
   - Upload CSV containing data of travel between two location points (demo file to be uploaded).
   - Once the data is uploaded, all booking locations are displayed in Map as clustures.
-  - User can see filters for -
+  - Below the map are some story charts indicating some insights from the given data.
+  - Click on the chart values to filter the plotting on the map.
+  - Click the button on top right to reset the filters and go back to ploting of all points
+
+Currently user can see filters for -
   -- What type travel plans are booked by users
   -- What are the different different packages that the users are using the most
 
