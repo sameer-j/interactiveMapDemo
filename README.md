@@ -1,7 +1,7 @@
 # Interactive Map demo
 This is sample app to demonstrate the plotting of various points on the Map, as well as applying filters to view view specific filtered information.
 
-The demo app works for a specific CSV file format, serves XRiders to get meaningful information of their rides.
+The demo app works for a specific CSV file format to get meaningful information of rides.
 https://rinkuk1993.github.io/interactiveMapDemo/
 
 # How it works
@@ -27,12 +27,10 @@ This project uses a number of open source projects to work properly:
 * [Redux](https://react-redux.js.org/) - Official React bindings for Redux
 * [Leaflet](https://leafletjs.com/) - Library for mobile-friendly interactive maps
 * [Leaflet.markercluster](https://github.com/Leaflet/Leaflet.markercluster) - Marker Clustering plugin for Leaflet. It allows a meaningful way to plot huge amount of markers on the map.
-And of course Dillinger itself is open source with a [public repository][dill]
- on GitHub.
 
 ### Installation
 
-Dillinger requires [Node.js](https://nodejs.org/) v10+ to run.
+This project requires [Node.js](https://nodejs.org/) v10+ to run.
 ```
 git clone https://github.com/Rinkuk1993/interactiveMapDemo.git
 ```
