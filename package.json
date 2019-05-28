@@ -2,6 +2,10 @@
   "name": "interactive-map-demo",
   "version": "0.1.0",
   "private": true,
+  "author": {
+    "email": "rinkuk1993@gmail.com",
+    "name": "Rinku Kumari"
+  },
   "homepage": "https://rinkuk1993.github.io/interactiveMapDemo",
   "dependencies": {
     "gh-pages": "^2.0.1",
