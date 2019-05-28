@@ -74,36 +74,37 @@ const packageType = (packages) => {
   }
 }
 
-// const packageType = (packages, cancelledPackage) => {
-//   // If a package is not used in any booking, it will not be shown in graph
-//   const bookings = Object.keys(packages).map((key) => {
-//     return packages[key].length - cancelledPackage[key].length;
-//   });
-//   const cancelledBooking = Object.keys(cancelledPackage).map((key) => {
-//     return cancelledPackage[key].length;
-//   })
-//   const title = 'Packages';
-//   const categories = ['Package 1', 'Package 2', 'Package 3', 'Package 4', 'Package 5', 'Package 6', 'Package 7', 'Others'];
-//   const id = 'Packages';
-//   const data = [{
-//     name: 'Successfull Booking',
-//     data: bookings,
-//     index:1,
-//   }, {
-//     name: 'Cancelled',
-//     data: cancelledBooking,
-//     color: 'red',
-//     index: 0,
-//   }];
-//   return {
-//     id,
-//     data,
-//     title,
-//     categories,
-//   }
-// }
+const packageVsCancellation = (packages, cancelledPackage) => {
+  // If a package is not used in any booking, it will not be shown in graph
+  const bookings = Object.keys(packages).map((key) => {
+    return packages[key].length - cancelledPackage[key].length;
+  });
+  const cancelledBooking = Object.keys(cancelledPackage).map((key) => {
+    return cancelledPackage[key].length;
+  })
+  const title = 'Packages';
+  const categories = ['Package 1', 'Package 2', 'Package 3', 'Package 4', 'Package 5', 'Package 6', 'Package 7', 'Others'];
+  const id = 'Packages';
+  const data = [{
+    name: 'Successfull Booking',
+    data: bookings,
+    index:1,
+  }, {
+    name: 'Cancelled',
+    data: cancelledBooking,
+    color: 'red',
+    index: 0,
+  }];
+  return {
+    id,
+    data,
+    title,
+    categories,
+  }
+}
 
 export {
   travelType,
   packageType,
+  packageVsCancellation,
 }

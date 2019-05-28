@@ -3,55 +3,52 @@ import React from 'react';
 class BarChart extends React.Component {
   componentDidMount() {
     const { params: { title, id, data, categories } } = this.props;
-    // Create the chart
     window.Highcharts.chart(id, {
       chart: {
-        type: 'column'
+          type: 'column'
       },
-      title: { text: title },
+      title: {
+        text: ''
+      },
       xAxis: {
-        type: 'category',
-        title: {
-          text: ''
-        },
-        categories,
+        categories: categories,
       },
       yAxis: {
-        title: {
-          text: 'Number of rides'
-        },
+          min: 0,
+          title: {
+            text: 'Package percentage'
+          },
+          stackLabels: {
+              enabled: true,
+              style: {
+                  fontWeight: 'bold',
+                  color: (window.Highcharts.theme && window.Highcharts.theme.textColor) || 'gray'
+              }
+          }
       },
-      legend: {
-        enabled: false
+      tooltip: {
+        headerFormat: '<b>{point.x}</b><br/>',
+        pointFormat: '{series.name}: {point.y}<br/>Total: {point.stackTotal}'
       },
       plotOptions: {
-        series: {
-          borderWidth: 0,
-          dataLabels: {
-            enabled: false,
+          column: {
+            stacking: 'percent',
+            dataLabels: {
+              enabled: true,
+              color: (window.Highcharts.theme && window.Highcharts.theme.dataLabelsColor) || 'white'
+            }
           }
-        },
-        column: {
-          stacking: 'normal'
-        }
       },
-
-      tooltip: {
-        pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.y}</b> ({point.percentage:.0f}%)<br/>',
-        shared: true,
-      },
-
       credits: {
         enabled: false
       },
-
-      series: data,
+      series: data
     });
   }
 
   render() {
     return (
-      <div id={this.props.params.id} style={{ width: 400, height: 400 }}></div>
+      <div id={this.props.params.id} style={{ width: 500, height: 300 }}></div>
     );
   }
 }
