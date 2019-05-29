@@ -33,27 +33,36 @@ class Map extends React.Component {
           markerArray.push(marker);
         }
       });
+      var destinationIcon = window.L.icon({
+        iconUrl: 'https://png.pngtree.com/svg/20170502/91a8305b9c.png',
+        iconSize:     [45, 45], // size of the icon
+        iconAnchor:   [22, 64], // point of the icon which will correspond to marker's location
+        shadowAnchor: [4, 22],  // the same for the shadow
+        popupAnchor:  [-3, -36] // point from which the popup should open relative to the iconAnchor
+    });
       var popup = window.L.popup();
       // Add info to tip
       this.markers.addLayers(markerArray);
       this.map.addLayer(this.markers);
       this.markers.on('click', (event) => {
-        const { id, user_id, to_lat, to_long, from_date, vehicle_model_id } = event.layer.options;
-        if(this.routing) {
-          this.map.removeControl(this.routing);
+        const { user_id, to_lat, to_long, from_date, to_date, id } = event.layer.options;
+        if(this.destinationMarker) {
+          this.map.removeLayer(this.destinationMarker);
         }
-        this.routing = window.L.Routing.control({
-          waypoints: [
-            window.L.latLng(event.latlng),
-            window.L.latLng(to_lat, to_long)
-          ]}).addTo(this.map);
+        if(to_lat && to_long) {
+          this.destinationMarker = new window.L.marker([to_lat, to_long], {icon: destinationIcon}).addTo(this.map);;
+        }
+        var newgroup = new window.L.featureGroup([this.destinationMarker, event.target]);
+        this.map.fitBounds(newgroup.getBounds());
         popup
           .setLatLng(event.latlng)
-          .setContent(`Ride Time : ${from_date} <br> Vehicle Id : ${vehicle_model_id} <br> User Id: ${user_id}`)
+          .setContent(`Booking Id : ${id} <br> Start Time : ${from_date} <br> End Time : ${to_date || 'Unknown'} <br> User Id: ${user_id} ${!to_lat || !to_long ? '<br> Destination: Unknown' : ''}`)
           .openOn(this.map);
       });
       this.map.on('click', () => {
-        this.map.removeControl(this.routing);
+        if (this.destinationMarker) {
+          this.map.removeLayer(this.destinationMarker);
+        }
       });
       var group = new window.L.featureGroup(markerArray);
       this.map.fitBounds(group.getBounds());
