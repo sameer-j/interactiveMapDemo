@@ -7,6 +7,7 @@ import {
   packageType,
   packageVsCancellation,
   packagePerTravelType,
+  onlineBooking,
 } from '../../scripts/chartData';
 
 class NumberOfBookingsChart extends React.Component {
@@ -22,6 +23,10 @@ class NumberOfBookingsChart extends React.Component {
           <div style={{display: 'inline-block'}}>
             <h3 style={{ textAlign: 'center' }}>Bookings for different travel types</h3>
             <PieChart callback={(id) => getData({ type: 'travel_type_id', id}) } params={travelType(data.travel_type_id)} />
+          </div>
+          <div style={{display: 'inline-block'}}>
+            <h3 style={{ textAlign: 'center' }}>Online Booking</h3>
+            <PieChart callback={(id) => getData({ type: 'online_booking', id}) } params={onlineBooking(data.online_booking)} />
           </div>
           <div style={{display: 'inline-block'}}>
             <h3 style={{ textAlign: 'center' }}>Cancellation per package</h3>

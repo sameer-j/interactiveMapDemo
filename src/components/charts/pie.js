@@ -43,7 +43,7 @@ class PieChart extends React.Component {
 
   render() {
     return (
-      <div id={this.props.params.id} style={{ width: 500, height: 200 }}></div>
+      <div id={this.props.params.id} style={{ width: 450, height: 200 }}></div>
     );
   }
 }

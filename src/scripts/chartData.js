@@ -1,22 +1,17 @@
+import { PackageName, TravelName, OnlineBookingName } from '../scripts/constant';
+
 const travelType = (travelTypes) => {
   const title = '';
   const id = 'travelChart';
+  const dataArray = Object.keys(travelTypes).map((id) => ({
+    name: TravelName[id],
+    y: travelTypes[id] ? travelTypes[id].length : 0,
+    id,
+  }));
   const data = [{
     name: 'Travel',
     colorByPoint: true,
-    data: [{
-      name: 'Long distance',
-      y: travelTypes[1].length,
-      id: 1,
-    }, {
-      name: 'Point to Point',
-      y: travelTypes[2].length,
-      id: 2,
-    }, {
-      name: 'Hourly rental',
-      y: travelTypes[3].length,
-      id: 3,
-    }]
+    data: dataArray
   }];
   
   return {
@@ -29,42 +24,15 @@ const travelType = (travelTypes) => {
 const packageType = (packages) => {
   const title = '';
   const id = 'packagePie';
+  const dataArray = Object.keys(packages).map((id) => ({
+    name: PackageName[id],
+    y: packages[id] ? packages[id].length : 0,
+    id,
+  }));
   const data = [{
     name: 'Packages',
     colorByPoint: true,
-    data: [{
-      name: 'Package 1',
-      y: packages[1] ? packages[1].length : 0,
-      id: 1,
-    }, {
-      name: 'Package 2',
-      y: packages[2] ? packages[2].length : 0,
-      id: 2,
-    }, {
-      name: 'Package 3',
-      y: packages[3] ? packages[3].length : 0,
-      id: 3,
-    },{
-      name: 'Package 4',
-      y: packages[4] ? packages[4].length : 0,
-      id: 4,
-    },{
-      name: 'Package 5',
-      y: packages[5] ? packages[5].length : 0,
-      id: 5,
-    },{
-      name: 'Package 6',
-      y: packages[6] ? packages[6].length : 0,
-      id: 6,
-    },{
-      name: 'Package 7',
-      y: packages[7] ? packages[7].length : 0,
-      id: 7,
-    },{
-      name: 'Others',
-      y: packages['others'] ? packages['others'].length : 0,
-      id: 'others',
-    }]
+    data: dataArray,
   }];
   
   return {
@@ -77,10 +45,16 @@ const packageType = (packages) => {
 const packageVsCancellation = (packages, cancelledPackage) => {
   // If a package is not used in any booking, it will not be shown in graph
   const bookings = Object.keys(packages).map((key) => {
-    return packages[key].length - cancelledPackage[key].length;
+    return {
+      y: packages[key].length - cancelledPackage[key].length,
+      id: key,
+    };
   });
   const cancelledBooking = Object.keys(cancelledPackage).map((key) => {
-    return cancelledPackage[key].length;
+    return {
+      y: cancelledPackage[key].length,
+      id: key,
+    }
   });
   const title = 'Packages';
   const categories = ['Package 1', 'Package 2', 'Package 3', 'Package 4', 'Package 5', 'Package 6', 'Package 7', 'Others'];
@@ -89,13 +63,13 @@ const packageVsCancellation = (packages, cancelledPackage) => {
     name: 'Successfull Booking',
     data: bookings,
     index:1,
-    // id: 'package_id',
+    id: 'package_id',
   }, {
     name: 'Cancelled',
     data: cancelledBooking,
     color: 'red',
     index: 0,
-    // id: 'cancelledPackageBookings',
+    id: 'cancelledPackageBookings',
   }];
   return {
     id,
@@ -133,9 +107,31 @@ const packagePerTravelType = (travelPerPackage) => {
   }
 }
 
+const onlineBooking = (onlineBookings) => {
+  const title = '';
+  const id = 'onlineBooking';
+  const dataArray = Object.keys(onlineBookings).map((id) => ({
+    name: OnlineBookingName[id],
+    y: onlineBookings[id] ? onlineBookings[id].length : 0,
+    id,
+  }));
+  const data = [{
+    name: 'Online booking',
+    colorByPoint: true,
+    data: dataArray,
+  }];
+  
+  return {
+    id,
+    data,
+    title,
+  }
+}
+
 export {
   travelType,
   packageType,
   packageVsCancellation,
   packagePerTravelType,
+  onlineBooking,
 }
