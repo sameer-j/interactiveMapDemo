@@ -7,11 +7,20 @@ const constructData = (csv) => {
   const generalisedData = getJsonWithFilterables(csv, XRideFilterables);
   // Add additional filters
   const cancelledPackageBookings = {};
+  const travelPerPackage = {};
   Object.keys(generalisedData.filtered.package_id).map((key) => {
-    const pack = generalisedData.filtered.package_id[key];
+    const pack = generalisedData.filtered.package_id[key]; // Array of Ids
     cancelledPackageBookings[key] = pack.filter(value => -1 !== generalisedData.filtered.Car_Cancellation[1].indexOf(value));
+    Object.keys(generalisedData.filtered.travel_type_id).map((travelKey) => {
+      if(!travelPerPackage[travelKey]) {
+        travelPerPackage[travelKey] = {};
+      }
+      travelPerPackage[travelKey][key] = pack.filter(value => -1 !== generalisedData.filtered.travel_type_id[travelKey].indexOf(value));
+    })
   });
-  generalisedData.filtered.Car_Cancellation.cancelledPackageBookings = cancelledPackageBookings;
+  generalisedData.filtered.travelPerPackage = travelPerPackage;
+  generalisedData.filtered.cancelledPackageBookings = cancelledPackageBookings;
+  console.log('generalisedData', generalisedData);
   return generalisedData;
 }
 

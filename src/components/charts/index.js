@@ -2,7 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import BarChart from './bar';
 import PieChart from './pie';
-import { travelType, packageType, packageVsCancellation } from '../../scripts/chartData';
+import {
+  travelType,
+  packageType,
+  packageVsCancellation,
+  packagePerTravelType,
+} from '../../scripts/chartData';
 
 class NumberOfBookingsChart extends React.Component {
   render () {
@@ -12,7 +17,11 @@ class NumberOfBookingsChart extends React.Component {
         <div style={{ display: 'inline-block' }} >
           <div style={{display: 'inline-block'}}>
             <h3 style={{ textAlign: 'center' }}>Cancellation per package</h3>
-            <BarChart params={packageVsCancellation(data.package_id, data.Car_Cancellation.cancelledPackageBookings)} />
+            <BarChart params={packageVsCancellation(data.package_id, data.cancelledPackageBookings)} />
+          </div>
+          <div style={{display: 'inline-block'}}>
+            <h3 style={{ textAlign: 'center' }}>Travel type in each package</h3>
+            <BarChart params={packagePerTravelType(data.travelPerPackage)} />
           </div>
           <div style={{display: 'inline-block'}}>
             <h3 style={{ textAlign: 'center' }}>Package bookings</h3>

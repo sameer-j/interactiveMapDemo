@@ -81,7 +81,7 @@ const packageVsCancellation = (packages, cancelledPackage) => {
   });
   const cancelledBooking = Object.keys(cancelledPackage).map((key) => {
     return cancelledPackage[key].length;
-  })
+  });
   const title = 'Packages';
   const categories = ['Package 1', 'Package 2', 'Package 3', 'Package 4', 'Package 5', 'Package 6', 'Package 7', 'Others'];
   const id = 'Packages';
@@ -103,8 +103,37 @@ const packageVsCancellation = (packages, cancelledPackage) => {
   }
 }
 
+const packagePerTravelType = (travelPerPackage) => {
+  const renderArray = {};
+  Object.keys(travelPerPackage).map((travel) => {
+    renderArray[travel] = [];
+    Object.keys(travelPerPackage[travel]).map((pack) => {
+      renderArray[travel].push(travelPerPackage[travel][pack].length)
+    });
+  });
+  const categories = ['Package 1', 'Package 2', 'Package 3', 'Package 4', 'Package 5', 'Package 6', 'Package 7', 'Others'];
+  const id = 'travelPacks';
+  const data = [{
+    name: 'Long Distance',
+    data: renderArray[1],
+  }, {
+    name: 'Point to Point',
+    data: renderArray[2],
+  }, {
+    name: 'Hourly Rental',
+    data: renderArray[3],
+  }];
+  return {
+    id,
+    data,
+    title: '',
+    categories,
+  }
+}
+
 export {
   travelType,
   packageType,
   packageVsCancellation,
+  packagePerTravelType,
 }

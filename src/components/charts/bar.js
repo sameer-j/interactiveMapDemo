@@ -16,7 +16,7 @@ class BarChart extends React.Component {
       yAxis: {
           min: 0,
           title: {
-            text: 'Package percentage'
+            text: 'Percent'
           },
           stackLabels: {
               enabled: true,
