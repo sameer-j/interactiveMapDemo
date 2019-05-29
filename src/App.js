@@ -11,7 +11,7 @@ export default class App extends React.Component {
       <Provider store={store}>
         <div className="App">
           <div style={{ display: 'inline-block', width: '100%' }}>
-            <h1 style={{ marginLeft: 5, display: 'inline-block' }}>Interactive Map demo</h1>
+            <h1 style={{ display: 'inline-block' }}>Interactive Map demo</h1>
             <Uploader />
           </div>
           <Map />

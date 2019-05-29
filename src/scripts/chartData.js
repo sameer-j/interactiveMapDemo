@@ -89,11 +89,13 @@ const packageVsCancellation = (packages, cancelledPackage) => {
     name: 'Successfull Booking',
     data: bookings,
     index:1,
+    // id: 'package_id',
   }, {
     name: 'Cancelled',
     data: cancelledBooking,
     color: 'red',
     index: 0,
+    // id: 'cancelledPackageBookings',
   }];
   return {
     id,

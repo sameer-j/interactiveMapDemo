@@ -2,7 +2,7 @@ import React from 'react';
 
 class BarChart extends React.Component {
   componentDidMount() {
-    const { params: { title, id, data, categories } } = this.props;
+    const { params: { id, data, categories }, callback } = this.props;
     window.Highcharts.chart(id, {
       chart: {
           type: 'column'
@@ -36,6 +36,13 @@ class BarChart extends React.Component {
             dataLabels: {
               enabled: true,
               color: (window.Highcharts.theme && window.Highcharts.theme.dataLabelsColor) || 'white'
+            },
+            point: {
+              events: {
+                  click: function () {
+                    callback(this.id);
+                  }
+              }
             }
           }
       },
