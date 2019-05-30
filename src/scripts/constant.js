@@ -6,7 +6,7 @@ export const PackageName = {
   5: 'Package 5',
   6: 'Package 6',
   7: 'Package 7',
-  other: 'Other',
+  others: 'Others',
 }
 
 export const TravelName = {
